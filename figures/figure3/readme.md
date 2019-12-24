@@ -6,11 +6,20 @@ It inputs one of 3 datasets (you need to select which one at the top of the code
 
 The inputs are (select one pair only):
 
-distributions7_mixed.m, corresponding to the flat environment
+flat environment:
+
+distributions7_mixed.m
+
 value_actions_gradient7_mixed.m
 
-distributions72_mixed.m, rich environment
+rich:
+
+distributions72_mixed.m
+
 value_actions_gradient72_mixed.m
 
-distributions73_mixed.m, poor environment
+poor:
+
+distributions73_mixed.m
+
 value_actions_gradient73_mixed.m
