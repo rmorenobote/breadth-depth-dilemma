@@ -2,7 +2,7 @@ Matlab Code to generate Fig. 2
 
 Just run plot...m file to generate the figure. 
 
-It inputs one of 3 datasets (you need to select which one at the top of the code), that can be chosen to generate one choice sets described in Fig. 2.
+It inputs one of 3 datasets (you need to select which one at the top of the code), that can be chosen to generate the choice sets described in Fig. 2.
 
 The inputs are:
 
