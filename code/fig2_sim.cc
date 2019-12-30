@@ -1,4 +1,4 @@
-// here we have N options and we select M options (sequential?/focused), to compare with sample all of them once (parallel)
+// Here we have N options and we select M options, to compare with sample all of them once (parallel)
 // here we introduce different non-uniform priors beta for prob, for arbitrary alpha and beta
 //here we also have the analytic for any beta dist, alpha, beta >= 1, integer
 
@@ -144,7 +144,6 @@ int main(void)
 						}
 					}
 
-					//check this 0 instead of 1/2, and also below, changes a lot!!!!!
 					Q_max = 0; // 1. / 2.; //maybe here put 1/2, because we can always take one of the not-sampled options, with reward prob 1/2
 					for (i = 0; i < M; i++) {
 						if (Q_vec[i] > Q_max) {
@@ -165,11 +164,8 @@ int main(void)
 					if (r >= p_vec[i_max]) {
 						R = 0;
 					}
-					R_aver = R_aver + R;
-
-					//printf("%i %f %f %f \n", k, Q_max, p_vec[i_max], p_max);	
+					R_aver = R_aver + R;	
 				}
-				//printf("\n");
 
 				Q_max_aver = Q_max_aver/samples;
 				p_select_aver = p_select_aver/samples;
@@ -372,7 +368,6 @@ int main(void)
 						}
 					}
 
-					//check this 0 instead of 1/2, and also below, changes a lot!!!!!
 					Q_max = 0; // 1. / 2.; //maybe here put 1/2, because we can always take one of the not-sampled options, with reward prob 1/2
 					for (i = 0; i < M; i++) {
 						if (Q_vec[i] > Q_max) {
@@ -393,12 +388,9 @@ int main(void)
 					if (r >= p_vec[i_max]) {
 						R = 0;
 					}
-					R_aver = R_aver + R;
-
-					//printf("%i %f %f %f \n", k, Q_max, p_vec[i_max], p_max);	
+					R_aver = R_aver + R;	
 				}
-				//printf("\n");
-
+				
 				Q_max_aver = Q_max_aver / samples;
 				p_select_aver = p_select_aver / samples;
 				p_max_aver = p_max_aver / samples;

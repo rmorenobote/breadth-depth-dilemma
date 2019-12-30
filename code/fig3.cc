@@ -1,4 +1,4 @@
-// here we have N options and we select M options (sequential?/focused), to compare with sample all of them once (parallel)
+// here we have N options and we select M options, to compare with sample all of them once (parallel)
 // here we introduce different non-uniform priors beta for prob, for arbitrary alpha and beta
 //here we USE STOCHASTIC GRADIENT DESCENT to looks for the OPTIMAL distribution of resources
 //here we start the search from the uniform distribution, or close to it
@@ -76,12 +76,6 @@ int main(void)
 		Q_vec = (double*)malloc(N * sizeof(double));
 		p_vec = (double*)malloc(N * sizeof(double));
 
-		/*
-		//this is the uniform initial condition
-		for (iM = 0; iM < N; iM++) {
-			L_vec[iM] = 1;
-		}
-		*/
 		//sqrt initial Sol, or close to it
 		for (iM = 0; iM < N; iM++) {
 			L_vec[iM] = 0; //to start with
@@ -152,7 +146,6 @@ int main(void)
 					}
 				}
 
-				//check this 0 instead of 1/2, and also below, changes a lot!!!!!
 				Q_max = 0; // 1. / 2.; //maybe here put 1/2, because we can always take one of the not-sampled options, with reward prob 1/2
 				for (i = 0; i < N; i++) {
 					if (Q_vec[i] > Q_max) {
@@ -172,10 +165,8 @@ int main(void)
 				}
 				R_aver = R_aver + R;
 
-				//printf("%i %f %f %f \n", k, Q_max, p_vec[i_max], p_max);	
 			}
-			//printf("\n");
-
+			
 			Q_max_aver_old = Q_max_aver / samples;
 			p_select_aver = p_select_aver / samples;
 			R_aver = R_aver / samples;
@@ -260,7 +251,6 @@ int main(void)
 				}
 
 
-				//check this 0 instead of 1/2, and also below, changes a lot!!!!!
 				Q_max = 0; // 1. / 2.; //maybe here put 1/2, because we can always take one of the not-sampled options, with reward prob 1/2
 				for (i = 0; i < N; i++) {
 					if (Q_vec[i] > Q_max) {
@@ -280,10 +270,8 @@ int main(void)
 				}
 				R_aver = R_aver + R;
 
-				//printf("%i %f %f %f \n", k, Q_max, p_vec[i_max], p_max);	
 			}
-			//printf("\n");
-
+			
 			Q_max_aver_new = Q_max_aver / samples;
 			p_select_aver = p_select_aver / samples;
 			R_aver = R_aver / samples;
@@ -292,10 +280,7 @@ int main(void)
 			if (Q_max_aver_new < Q_max_aver_old) {
 				L_vec[i1] = L_vec[i1] + 1;
 				L_vec[i2] = L_vec[i2] - 1;
-			}
-			
-			//printf("%i %i %f %f %i %i %i %i \n", N, iter, Q_max_aver_new, Q_max_aver_old, L_vec[0], L_vec[1], L_vec[2], L_vec[3]);
-		
+			}	
 		}
 
 		//exact analytical expression for the approximate optimal M*=sqrt(C), to compare with the optimal found by stoch grad descent

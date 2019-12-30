@@ -34,7 +34,7 @@ for i=[4,10,100]
 
    index = find( X(:,1) == i ); 
    
-   plot(X(index,2),X(index,5),'k.'); %aerage reward, but reward is not generated randomly and averaged
+   plot(X(index,2),X(index,5),'k.'); %average reward, but reward is not generated randomly and averaged
    plot(X(index,2),X_th(index,5),'-','Color',color(i,:)); %exact flat prior
    %plot(X(index,2),X_th(index,6),'--'); %exact
    %plot(X(index,2),X(index,7),'k.'); %average reward, computed from stats
@@ -47,7 +47,6 @@ text(0.8,0.80,'C=10','Units','normalized','Color',[0.6, 0.6, 0.6],'FontSize',8,.
     'FontName','Times New Roman');
 text(0.8,0.90,'C=100','Units','normalized','Color',[0., 0., 0.],'FontSize',8,...
     'FontName','Times New Roman');
-%xticks([0 20 40 60 80 100])
 xticks([1 2 4 10 20 50 100])
 yticks([0.5 0.6 0.7 0.8 0.9 1]) 
 %xticklabels({'3\pi'})

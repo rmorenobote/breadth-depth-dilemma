@@ -24,19 +24,6 @@ int main(void)
 	const int     N_vec[18] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 25, 49, 100, 14 * 14, 20 * 20, 30 * 30, 50*50 };
 	const int     num_N = 18;
 
-	//use squares to compare
-	//const int     N_vec[15] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 25, 49, 100, 14*14 };
-	//const int     num_N = 15;
-
-	//const int     N_vec[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	//const int     num_N = 10;
-
-	//use squares to compare
-	//const int     N_vec[20] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
-	//const int     num_N = 20;
-
-
-
 	const double  alpha = 1; //if different from one, not flat prior
 	const double  beta = 1; //only valid for alpha, beta >= 1 (alpha=beta=1, is the uniform case)
 
@@ -75,13 +62,7 @@ int main(void)
 		y_vec = (int*)malloc(N * sizeof(double));
 		Q_vec = (double*)malloc(N * sizeof(double));
 		p_vec = (double*)malloc(N * sizeof(double));
-
-		/*
-		//this is the uniform initial condition
-		for (iM = 0; iM < N; iM++) {
-			L_vec[iM] = 1;
-		}
-		*/
+	
 		//sqrt initial Sol, or close to it
 		for (iM = 0; iM < N; iM++) {
 			L_vec[iM] = 0; //to start with
@@ -152,7 +133,6 @@ int main(void)
 					}
 				}
 
-				//check this 0 instead of 1/2, and also below, changes a lot!!!!!
 				Q_max = 0; // 1. / 2.; //maybe here put 1/2, because we can always take one of the not-sampled options, with reward prob 1/2
 				for (i = 0; i < N; i++) {
 					if (Q_vec[i] > Q_max) {
@@ -172,9 +152,7 @@ int main(void)
 				}
 				R_aver = R_aver + R;
 
-				//printf("%i %f %f %f \n", k, Q_max, p_vec[i_max], p_max);	
 			}
-			//printf("\n");
 
 			Q_max_aver_old = Q_max_aver / samples;
 			p_select_aver = p_select_aver / samples;
@@ -259,7 +237,6 @@ int main(void)
 				}
 
 
-				//check this 0 instead of 1/2, and also below, changes a lot!!!!!
 				Q_max = 0; // 1. / 2.; //maybe here put 1/2, because we can always take one of the not-sampled options, with reward prob 1/2
 				for (i = 0; i < N; i++) {
 					if (Q_vec[i] > Q_max) {
@@ -279,9 +256,7 @@ int main(void)
 				}
 				R_aver = R_aver + R;
 
-				//printf("%i %f %f %f \n", k, Q_max, p_vec[i_max], p_max);	
 			}
-			//printf("\n");
 
 			Q_max_aver_new = Q_max_aver / samples;
 			p_select_aver = p_select_aver / samples;
@@ -292,9 +267,7 @@ int main(void)
 				L_vec[i1] = L_vec[i1] + 1;
 				L_vec[i2] = L_vec[i2] - 1;
 			}
-			
-			//printf("%i %i %f %f %i %i %i %i \n", N, iter, Q_max_aver_new, Q_max_aver_old, L_vec[0], L_vec[1], L_vec[2], L_vec[3]);
-		
+				
 		}
 
 		//exact analytical expression for the approximate optimal M*=sqrt(C), to compare with the optimal found by stoch grad descent

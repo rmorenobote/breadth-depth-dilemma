@@ -5,29 +5,17 @@
 clear;
 %clf;
 
-%symm
-% X = load('distributions7.m');
-% Z = load('value_actions_gradient7.m');
-
-% - skewed
-% X = load('distributions72.m');
-% Z = load('value_actions_gradient72.m');
-
-% + skewed
-% X = load('distributions73.m');
-% Z = load('value_actions_gradient73.m');
-
-%NEW - mixed
-% X = load('distributions7_mixed.m');
-% Z = load('value_actions_gradient7_mixed.m');
+% flat
+ X = load('distributions7_mixed.m');
+ Z = load('value_actions_gradient7_mixed.m');
 
 % - skewed
 % X = load('distributions72_mixed.m');
 % Z = load('value_actions_gradient72_mixed.m');
 
 % + skewed
-X = load('distributions73_mixed.m');
-Z = load('value_actions_gradient73_mixed.m');
+%X = load('distributions73_mixed.m');
+%Z = load('value_actions_gradient73_mixed.m');
 
 
 
@@ -56,13 +44,7 @@ for i=1:num_N
    num_zeros_vec(i) = length(index2);
    frac_actions_vec(i) = 1 - length(index2)/N_vec(i);
    
-%    %number of 0s and 1s (plus the conditino that there is at least a alternative with 2 samples)
-%    index3 = find( (X(index,3) == 0 | X(index,3) == 1) & ...
-%        length( find(X(index,3) > 1) ) > 1 );
-%    
-%    num_zeros_ones_vec(i) = length(index3);
-%    frac_actions_vec2(i) = 1 - length(index3)/N_vec(i);
-%    
+  
    
    frac_max_asymptotic(i) = (sqrt(N_vec(i)^3-N_vec(i)) + N_vec(i))/(N_vec(i) - 2) / N_vec(i);
 end
@@ -93,7 +75,7 @@ set(gca,'fontsize',11)
 set(gca, 'FontName', 'Times New Roman')
 set(gca, 'XScale', 'log')
 plot(Z(:,1),100*Z(:,6)./Z(:,9)-100,'Color',[0. 0. 1]); %numerical optimal square root sim, with correction becuase non-intenger sqrt(C) 
-    %in the new version ...5 (not in ...4), the comparison rule 9 is uniform for N<=7, and
+    %in the new version, the comparison rule 9 is uniform for N<=7, and
     %then square root with correction for inexact square root
 %plot(Z(:,1),100*Z(:,6)./Z(:,8)-100,'b--'); %max uniform
 %plot(Z(:,1),100*Z(:,6)./Z(:,7)-100,'r--'); %optimal square root, th, no correction becuase of non-integer sqrt(C) 
