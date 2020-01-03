@@ -1,25 +1,13 @@
-Matlab Code to generate Fig. 3
+Matlab Code to generate Fig. 2
 
-Just run plot...m file to generate the figure.
+Just run plot...m file to generate the figure. 
 
-It inputs one of 3 datasets (you need to select which one at the top of the code, ended with ...mixed), that can be chosen to generate the lines shown in Fig. 3.
+It inputs one of 3 datasets (you need to select which one at the top of the code), that can be chosen to generate the choice sets described in Fig. 2.
 
-The inputs are (select one pair only):
+The inputs are:
 
-flat environment:
+distributions6.m, corresponding to the flat environment
 
-distributions7_mixed.m
+distributions62.m, rich environment
 
-value_actions_gradient7_mixed.m
-
-rich:
-
-distributions72_mixed.m
-
-value_actions_gradient72_mixed.m
-
-poor:
-
-distributions73_mixed.m
-
-value_actions_gradient73_mixed.m
+distributions63.m, poor environment

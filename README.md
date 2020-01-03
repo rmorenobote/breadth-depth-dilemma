@@ -5,9 +5,9 @@ This repository contains the Matlab code to carry out the data analysis for the 
 
 The /figures folder contains Matlab code for each of the figures.
 
-The /code folder contains cc code to generate data used in the /figures folder.
+The /code folder contains cc code to generate data used in the /figures folder. This code was the one used to produce the figures in the manuscript.
 
-The /julia folder contains a Julia version of the code that reproduces the figures in the paper. The jupiter notebook "Reproducing_results.ipynb" produces every figure by calling the functions defined in the module "Functions.jl". This implementation uses the utility estimate that stems from the Markov Chain Monte Carlo method described in the Methods. 
+The /julia folder contains a Julia version of the code that reproduces the figures in the paper and was used to verify the results obtained with the original method. The jupyter notebook "Reproducing_results.ipynb" produces every figure by calling the functions defined in the module "Functions.jl". This implementation uses the utility estimate that stems from the Markov Chain Monte Carlo method described in the Methods. 
 
 To run the Julia code, there are two options:
 1. If you have Julia v1.0 or higher installed, you can simply download the module "Functions.jl" and the jupyter notebook and run the notebook in the same directory.

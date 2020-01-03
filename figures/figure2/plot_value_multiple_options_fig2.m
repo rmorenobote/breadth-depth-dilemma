@@ -351,100 +351,100 @@ ylabel('optimal M / C')
 %NEW way of computing powers of fits with the ...th2th code and many points: 
 %%%%%%%%%%%%%%%%%%
 
-figure(11)
-
-%flat
-clear;
-
-X_th = load('value_actions_th2th_flat.m'); 
-
-N_vec = sort( unique(X_th(:,1)) );
-num_N = length( N_vec );
-
-hold on
-set(gca,'fontsize',11)
-set(gca, 'FontName', 'Times New Roman')
-set(gca, 'XScale', 'log')
-for i=1:num_N
-   index_th = find( X_th(:,1) == N_vec(i) ); 
-   
-   %exact
-   max_vec_th2(i) = max( X_th(index_th,5) ); 
-   M_index_aux_th2(i) = find( X_th(index_th,5) == max( X_th(index_th,5) ) ); 
-   M_index_th2(i) = X_th(index_th(M_index_aux_th2(i)),2);
-   frac_index_th2(i) = M_index_th2(i) / N_vec(i); 
-end
-plot(N_vec,frac_index_th2,'k');
-xticks([10 10^3 10^5]) 
-xlabel('Capacity');
-ylabel('optimal M / C')
-
-X_reg = [log(N_vec) ones(length(log(N_vec)),1) ]; %adding column of ones
-[w,CI] = regress(log(M_index_th2'),X_reg);
-w(1)
-CI
-
-%rich
-clear;
-
-X_th = load('value_actions_th2th_rich.m'); 
-
-N_vec = sort( unique(X_th(:,1)) );
-num_N = length( N_vec );
-
-hold on
-set(gca,'fontsize',11)
-set(gca, 'FontName', 'Times New Roman')
-set(gca, 'XScale', 'log')
-for i=1:num_N
-   index_th = find( X_th(:,1) == N_vec(i) ); 
-   
-   %exact
-   max_vec_th2(i) = max( X_th(index_th,5) ); 
-   M_index_aux_th2(i) = find( X_th(index_th,5) == max( X_th(index_th,5) ) ); 
-   M_index_th2(i) = X_th(index_th(M_index_aux_th2(i)),2);
-   frac_index_th2(i) = M_index_th2(i) / N_vec(i); 
-end
-plot(N_vec,frac_index_th2,'Color',[0.5 0.2 0]);
-xticks([10 10^3 10^5]) 
-xlabel('Capacity');
-ylabel('optimal M / C')
-
-X_reg = [log(N_vec) ones(length(log(N_vec)),1) ]; %adding column of ones
-[w,CI] = regress(log(M_index_th2'),X_reg);
-w(1)
-CI
-
-%poor
-clear;
-
-X_th = load('value_actions_th2th_poor.m'); 
-
-N_vec = sort( unique(X_th(:,1)) );
-num_N = length( N_vec );
-
-hold on
-set(gca,'fontsize',11)
-set(gca, 'FontName', 'Times New Roman')
-set(gca, 'XScale', 'log')
-for i=1:num_N
-   index_th = find( X_th(:,1) == N_vec(i) ); 
-   
-   %exact
-   max_vec_th2(i) = max( X_th(index_th,5) ); 
-   M_index_aux_th2(i) = find( X_th(index_th,5) == max( X_th(index_th,5) ) ); 
-   M_index_th2(i) = X_th(index_th(M_index_aux_th2(i)),2);
-   frac_index_th2(i) = M_index_th2(i) / N_vec(i); 
-end
-plot(N_vec,frac_index_th2,'Color',[0 0 1]);
-xticks([10 10^3 10^5]) 
-xlabel('Capacity');
-ylabel('optimal M / C')
-
-X_reg = [log(N_vec) ones(length(log(N_vec)),1) ]; %adding column of ones
-[w,CI] = regress(log(M_index_th2'),X_reg);
-w(1)
-CI
+% figure(11)
+% 
+% %flat
+% clear;
+% 
+% X_th = load('value_actions_th2th_flat.m'); 
+% 
+% N_vec = sort( unique(X_th(:,1)) );
+% num_N = length( N_vec );
+% 
+% hold on
+% set(gca,'fontsize',11)
+% set(gca, 'FontName', 'Times New Roman')
+% set(gca, 'XScale', 'log')
+% for i=1:num_N
+%    index_th = find( X_th(:,1) == N_vec(i) ); 
+%    
+%    %exact
+%    max_vec_th2(i) = max( X_th(index_th,5) ); 
+%    M_index_aux_th2(i) = find( X_th(index_th,5) == max( X_th(index_th,5) ) ); 
+%    M_index_th2(i) = X_th(index_th(M_index_aux_th2(i)),2);
+%    frac_index_th2(i) = M_index_th2(i) / N_vec(i); 
+% end
+% plot(N_vec,frac_index_th2,'k');
+% xticks([10 10^3 10^5]) 
+% xlabel('Capacity');
+% ylabel('optimal M / C')
+% 
+% X_reg = [log(N_vec) ones(length(log(N_vec)),1) ]; %adding column of ones
+% [w,CI] = regress(log(M_index_th2'),X_reg);
+% w(1)
+% CI
+% 
+% %rich
+% clear;
+% 
+% X_th = load('value_actions_th2th_rich.m'); 
+% 
+% N_vec = sort( unique(X_th(:,1)) );
+% num_N = length( N_vec );
+% 
+% hold on
+% set(gca,'fontsize',11)
+% set(gca, 'FontName', 'Times New Roman')
+% set(gca, 'XScale', 'log')
+% for i=1:num_N
+%    index_th = find( X_th(:,1) == N_vec(i) ); 
+%    
+%    %exact
+%    max_vec_th2(i) = max( X_th(index_th,5) ); 
+%    M_index_aux_th2(i) = find( X_th(index_th,5) == max( X_th(index_th,5) ) ); 
+%    M_index_th2(i) = X_th(index_th(M_index_aux_th2(i)),2);
+%    frac_index_th2(i) = M_index_th2(i) / N_vec(i); 
+% end
+% plot(N_vec,frac_index_th2,'Color',[0.5 0.2 0]);
+% xticks([10 10^3 10^5]) 
+% xlabel('Capacity');
+% ylabel('optimal M / C')
+% 
+% X_reg = [log(N_vec) ones(length(log(N_vec)),1) ]; %adding column of ones
+% [w,CI] = regress(log(M_index_th2'),X_reg);
+% w(1)
+% CI
+% 
+% %poor
+% clear;
+% 
+% X_th = load('value_actions_th2th_poor.m'); 
+% 
+% N_vec = sort( unique(X_th(:,1)) );
+% num_N = length( N_vec );
+% 
+% hold on
+% set(gca,'fontsize',11)
+% set(gca, 'FontName', 'Times New Roman')
+% set(gca, 'XScale', 'log')
+% for i=1:num_N
+%    index_th = find( X_th(:,1) == N_vec(i) ); 
+%    
+%    %exact
+%    max_vec_th2(i) = max( X_th(index_th,5) ); 
+%    M_index_aux_th2(i) = find( X_th(index_th,5) == max( X_th(index_th,5) ) ); 
+%    M_index_th2(i) = X_th(index_th(M_index_aux_th2(i)),2);
+%    frac_index_th2(i) = M_index_th2(i) / N_vec(i); 
+% end
+% plot(N_vec,frac_index_th2,'Color',[0 0 1]);
+% xticks([10 10^3 10^5]) 
+% xlabel('Capacity');
+% ylabel('optimal M / C')
+% 
+% X_reg = [log(N_vec) ones(length(log(N_vec)),1) ]; %adding column of ones
+% [w,CI] = regress(log(M_index_th2'),X_reg);
+% w(1)
+% CI
 
 
 
