@@ -1,10 +1,13 @@
 module Functions
 
+using Distributions
+
 export divisors
 export uni_utility_flat
 export uni_utility
 export utility_estimate
 export dist_max
+export utility_sim_uni
 
 function divisors(n)
     out = Int64[]
@@ -69,6 +72,35 @@ function uni_utility(C,M,α,β)
         out+=(cumulative_Bb(n,L,α,β)^M - cumulative_Bb(n-1,L,α,β)^M)*((n+α)/(L+α+β))
     end
     out
+end
+
+## Utility estimate through simulations
+function utility_sim_uni(C,M,α,β,N_sim = 1E5)
+    L = Int64(C/M)
+    out = 0
+    mean_new = 0
+    var_new = 0
+    for k in 1:N_sim
+        mean_old = mean_new
+        var_old = var_new
+        post = zeros(M)
+        for i in 1:M
+            p = rand(Beta(α,β))
+            n = 0
+            for j in 1:L
+                if rand() < p
+                    n += 1
+                end
+            end
+            post[i] = (α + n)/(L+α+β)
+        end
+        x = findmax(post)[1]
+        mean_new = mean_old + (x-mean_old)/k
+        if k > 1
+            var_new = var_old + (x-mean_old)*(x-mean_new)/(k-1)
+        end
+    end
+    mean_new, var_new/N_sim
 end
 
 ## Markov-Chain Monte Carlo utility estimate
